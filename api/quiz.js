@@ -59,7 +59,7 @@ export default async function (req, res) {
     const mode = ["mixed", "poster", "year", "plot"].includes(req.query.mode) ? req.query.mode : "mixed";
     const trending = await tmdb("/trending/movie/week", { page: 1 });
     const popular = await tmdb("/movie/popular", { page: 1 });
-    const films = [...new Map([...movieList(trending), ...movieList(popular)].filter(m => m.title && m.release_date && m.poster_path && m.overview).map(m => [m.id, m])).values()];
+    const films = [...new Map([...movieList(trending), ...movieList(popular)].filter(m => m.title && m.release_date && m.poster_path && m.backdrop_path && m.overview).map(m => [m.id, m])).values()];
     if (films.length < 4) throw new Error("Not enough movie data to build a quiz.");
     const chosen = shuffle(films).slice(0, 5);
     const allYears = films.map(m => Number(String(m.release_date).slice(0, 4))).filter(y => y > 1900);
@@ -67,7 +67,7 @@ export default async function (req, res) {
       const type = mode === "mixed" ? ["poster", "year", "plot"][index % 3] : mode;
       if (type === "poster") {
         const options = shuffle([movie.title, ...shuffle(films.filter(m => m.id !== movie.id)).slice(0, 3).map(m => m.title)]);
-        return { type, question: "Which movie is shown in this poster?", image: "https://image.tmdb.org/t/p/w500" + movie.poster_path, options, answer: options.indexOf(movie.title), reveal: movie.title };
+        return { type, question: "Which movie does this scene belong to?", image: "https://image.tmdb.org/t/p/w780" + movie.backdrop_path, options, answer: options.indexOf(movie.title), reveal: movie.title };
       }
       if (type === "year") {
         const correct = Number(movie.release_date.slice(0, 4));
