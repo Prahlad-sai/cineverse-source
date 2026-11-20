@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090a0f">
+  <title>CINEVERSE — Your Universe of Cinema</title>
+  <meta name="description" content="Discover films, explore your taste, and find your next obsession with CINEVERSE.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/theme.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="/" aria-label="CINEVERSE home"><span class="brand-mark">C</span><span>CINE<span>VERSE</span><small>YOUR UNIVERSE OF CINEMA</small></span></a>
+      <div class="side-label">DISCOVER</div>
+      <nav class="nav-group">
+        <a class="nav-link active" href="#home" data-view="home"><span class="nav-icon">⌂</span>Home</a>
+        <a class="nav-link" href="#discover" data-view="discover"><span class="nav-icon">◈</span>Discover</a>
+        <a class="nav-link" href="#search" data-view="search"><span class="nav-icon">⌕</span>Search movies</a>
+        <a class="nav-link ai-link" href="#cineai" data-view="cineai"><span class="nav-icon">✳</span>CineAI <i>NEW</i></a>
+      </nav>
+      <div class="side-label">MY CINEMA</div>
+      <nav class="nav-group">
+        <a class="nav-link" href="#library" data-view="library"><span class="nav-icon">▤</span>My Library</a>
+        <a class="nav-link" href="#reviews" data-view="reviews"><span class="nav-icon">✎</span>My Reviews</a>
+        <a class="nav-link" href="#stats" data-view="stats"><span class="nav-icon">▥</span>Statistics</a>
+        <a class="nav-link" href="#collections" data-view="collections"><span class="nav-icon">▧</span>Collections</a>
+      </nav>
+      <div class="side-label">COMMUNITY & FUN</div>
+      <nav class="nav-group">
+        <a class="nav-link" href="#community" data-view="community"><span class="nav-icon">◎</span>Community</a>
+        <a class="nav-link" href="#quiz" data-view="quiz"><span class="nav-icon">✦</span>CineQuiz</a>
+        <a class="nav-link" href="#leaderboard" data-view="leaderboard"><span class="nav-icon">♜</span>Leaderboard</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-promo"><span class="promo-orb">✧</span><strong>Your next favourite<br>film is out there.</strong><p>Let CineAI find it for you.</p><button class="promo-button" data-go="cineai">Explore CineAI <span>↗</span></button></div>
+        <button class="profile-mini" id="profileButton"><span class="avatar">G</span><span class="profile-copy"><b id="userName">Guest viewer</b><small id="userStatus">Sign in to personalise</small></span><span class="more">···</span></button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="menuToggle" aria-label="Open navigation">☰</button>
+        <div class="breadcrumb"><span>YOUR CINEMA SPACE</span><b>/</b><strong id="pageLabel">Home</strong></div>
+        <div class="top-actions"><button class="icon-button" id="searchShortcut" aria-label="Search">⌕</button><button class="signin-button" id="signInButton">Sign in <span>↗</span></button></div>
+      </header>
+      <section class="view active-view" id="view-home">
+        <div class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-line"></span>THE WORLD OF FILM, IN ONE PLACE</div><h1>Every story has<br><em>a universe.</em></h1><p class="hero-sub">Find the films that move you. Explore beyond the familiar.</p><div class="hero-actions"><button class="primary-button" data-go="discover">Explore movies <span>↗</span></button><button class="text-button" data-go="cineai"><span class="play-symbol">✳</span> Ask CineAI</button></div></div><div class="hero-art"><div class="hero-ring ring-a"></div><div class="hero-ring ring-b"></div><div class="hero-orbit"></div><div class="hero-poster poster-back"></div><div class="hero-poster poster-front"><div class="poster-glow"></div><span>THE ART OF<br><b>STORYTELLING</b></span><small>INFINITE WORLDS. ONE UNIVERSE.</small></div><div class="floating-note note-top"><span>✦</span> STORIES THAT STAY</div><div class="floating-note note-bottom">01 <i>—</i> INFINITE DISCOVERY</div></div></div>
+        <div class="section-heading"><div><div class="eyebrow">CURATED FOR YOUR NEXT MOVIE NIGHT</div><h2>Trending <em>now</em></h2></div><button class="see-all" data-go="discover">View all <span>↗</span></button></div>
+        <div class="movie-grid" id="trendingGrid"><div class="loading-state"><span class="loader"></span>Gathering the latest stories…</div></div>
+        <div class="section-heading compact-heading"><div><div class="eyebrow">A LITTLE OUTSIDE THE ALGORITHM</div><h2>Hidden <em>gems</em></h2></div><span class="subtle-label">LESSER KNOWN. DEEPLY LOVED.</span></div>
+        <div class="movie-grid" id="hiddenGrid"><div class="loading-state"><span class="loader"></span>Finding overlooked favourites…</div></div>
+        <footer class="footer"><span>© 2026 CINEVERSE</span><span>MADE FOR THE LOVE OF CINEMA <b>✦</b></span></footer>
+      </section>
+
+      <section class="view" id="view-discover"><div class="page-intro"><div class="eyebrow">EXPLORE THE MULTIVERSE</div><h1>Find your next <em>story.</em></h1><p>From timeless classics to the films everyone's talking about.</p></div><div class="filter-row"><button class="filter-chip selected" data-sort="trending">Trending</button><button class="filter-chip" data-sort="popular">Popular</button><button class="filter-chip" data-sort="top_rated">Top rated</button><button class="filter-chip" data-sort="upcoming">Coming soon</button><select id="genreFilter" class="dark-select"><option value="">All genres</option></select></div><div class="movie-grid discover-grid" id="discoverGrid"></div></section>
+
+      <section class="view" id="view-search"><div class="page-intro"><div class="eyebrow">THE SEARCH FOR SOMETHING GREAT</div><h1>Search the <em>universe.</em></h1><p>Titles, actors, directors — follow your curiosity.</p></div><div class="search-box"><span>⌕</span><input id="movieSearch" type="search" placeholder="Try “psychological thrillers” or a movie title…"><kbd>ENTER ↵</kbd></div><div class="movie-grid discover-grid" id="searchGrid"><div class="empty-state">Start with a title, actor, director, or genre.</div></div></section>
+
+      <section class="view" id="view-cineai"><div class="page-intro"><div class="eyebrow"><span class="spark">✳</span> YOUR PERSONAL FILM COMPANION</div><h1>Meet <em>CineAI.</em></h1><p>Tell it what you're in the mood for. It knows where to look.</p></div><div class="ai-layout"><div class="ai-main"><div class="ai-header"><div class="ai-avatar">✳</div><div><b>CineAI</b><small>Your cinematic companion · Ready to explore</small></div><span class="online-dot"></span></div><div class="chat-messages" id="chatMessages"><div class="ai-message"><span class="message-avatar">✳</span><div><small>CINEAI</small><p>Hey, cinephile. What kind of story are we in the mood for today? Give me a feeling, a film you love, or a very specific kind of chaos. 🎬</p></div></div></div><div class="suggestion-row"><button class="suggestion" data-prompt="Recommend a dark psychological thriller under 2 hours">Dark thrillers under 2 hours</button><button class="suggestion" data-prompt="Find me feel-good movies that are not predictable">Feel-good, not predictable</button><button class="suggestion" data-prompt="Movies with mind-bending endings like The Prestige">Mind-bending endings</button></div><form class="chat-input" id="chatForm"><input id="chatInput" placeholder="Describe the movie you're looking for…" autocomplete="off"><button type="submit" aria-label="Send message">↑</button></form><div class="chat-disclaimer">CineAI recommendations are grounded in movie database results. Always spoiler-conscious.</div></div><aside class="ai-aside"><div class="aside-kicker">TRY ASKING</div><h3>Think beyond<br>the <em>genre.</em></h3><div class="prompt-example"><span>01</span><p>“A film that feels like a rainy Sunday in Tokyo.”</p></div><div class="prompt-example"><span>02</span><p>“Something tense, clever, and impossible to predict.”</p></div><div class="prompt-example"><span>03</span><p>“A hidden gem from South Korean cinema.”</p></div><div class="ai-aside-foot">YOUR TASTE. YOUR UNIVERSE.</div></aside></div></section>
+
+      <section class="view" id="view-library"><div class="page-intro"><div class="eyebrow">YOUR PERSONAL ARCHIVE</div><h1>My <em>cinema.</em></h1><p>Every film you save, love, and want to remember.</p></div><div class="tab-row"><button class="tab active" data-library="watchlist">Watchlist</button><button class="tab" data-library="watched">Watched</button><button class="tab" data-library="favourites">Favourites</button></div><div class="movie-grid discover-grid" id="libraryGrid"><div class="empty-state">Sign in to start building your personal cinema library.</div></div></section>
+
+      <section class="view" id="view-reviews"><div class="page-intro"><div class="eyebrow">YOUR CRITICAL VOICE</div><h1>My <em>reviews.</em></h1><p>Your thoughts are part of the story.</p></div><div id="reviewsContent" class="empty-state">Your reviews will live here. Explore a movie and share your take.</div></section>
+      <section class="view" id="view-stats"><div class="page-intro"><div class="eyebrow">A MIRROR OF YOUR TASTE</div><h1>Your cinema, <em>decoded.</em></h1><p>Patterns, favourites, and the stories you return to.</p></div><div class="stats-grid" id="statsGrid"><div class="stat-card"><small>MOVIES WATCHED</small><strong>—</strong><span>Build your history</span></div><div class="stat-card"><small>REVIEWS WRITTEN</small><strong>—</strong><span>Your voice matters</span></div><div class="stat-card"><small>AVERAGE RATING</small><strong>—</strong><span>Your personal score</span></div></div><div class="chart-panel"><div class="eyebrow">YOUR GENRE DNA</div><h2>What moves <em>you?</em></h2><div id="genreChart" class="chart-placeholder">Your genre profile will appear as you log movies.</div></div></section>
+      <section class="view" id="view-collections"><div class="page-intro"><div class="eyebrow">CURATE YOUR OWN CANON</div><h1>Film <em>collections.</em></h1><p>Group the films that belong together.</p></div><div class="empty-state">Create themed collections from your personal library.</div></section>
+      <section class="view" id="view-community"><div class="page-intro"><div class="eyebrow">CINEMA IS BETTER TOGETHER</div><h1>The <em>community.</em></h1><p>Discover what fellow cinephiles are watching and loving.</p></div><div class="empty-state">The community feed is coming into focus. Sign in to build your profile.</div></section>
+      <section class="view" id="view-quiz"><div class="page-intro"><div class="eyebrow">HOW WELL DO YOU KNOW THE MOVIES?</div><h1>Welcome to <em>CineQuiz.</em></h1><p>Test your film knowledge, one question at a time.</p></div><div class="quiz-launch"><div class="quiz-symbol">✦</div><div><div class="eyebrow">THE CINEMA CHALLENGE</div><h2>Ready for your close-up?</h2><p>Poster clues, plot puzzles, actor trivia, and more.</p><button class="primary-button" id="startQuiz">Start a quiz <span>↗</span></button></div></div><div id="quizArea"></div></section>
+      <section class="view" id="view-leaderboard"><div class="page-intro"><div class="eyebrow">THE CINEPHILE HALL OF FAME</div><h1>Top <em>cinephiles.</em></h1><p>Every great film fan deserves their moment.</p></div><div class="empty-state">Complete quizzes and share reviews to climb the leaderboard.</div></section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="movieModal"><div class="movie-modal" id="movieModalContent"><button class="modal-close" id="modalClose">×</button><div class="modal-loading"><span class="loader"></span></div></div></div>
+  <div class="toast" id="toast"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
