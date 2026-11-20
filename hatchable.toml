@@ -8,3 +8,15 @@ required = true
 [[secret]]
 name = "TMDB_API_KEY"
 description = "TMDB API key used server-side to retrieve verified movie data."
+
+[db.tables.quiz_attempts]
+read = "own"
+write = "own"
+
+[db.tables.user_library]
+read = "own"
+write = "own"
+
+[db.tables.reviews]
+read = "public"
+write = "own"

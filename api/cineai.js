@@ -10,7 +10,7 @@ export default async function (req, res) {
     const candidates = movieList(d).slice(0, 18);
     const compact = candidates.map(m => ({ id:m.id,title:m.title,year:(m.release_date||"").slice(0,4),rating:m.vote_average,overview:m.overview.slice(0,240) }));
     const result = await ai.generateText({
-      model: "sonnet",
+      // Use the provider configured in Hatchable Setup.
       system: "You are CineAI, a thoughtful and spoiler-conscious film curator. Recommend only films present in the supplied candidate list. Never invent a title, cast member, plot detail, runtime, rating, or availability. If the list does not contain a strong match, say so and ask for a refined clue. Keep the response warm, concise, and useful. Explain why the best matches fit the user's mood. Avoid spoilers.",
       prompt: "Viewer request: " + message + "\n\nVerified TMDB candidates (the only films you may recommend):\n" + JSON.stringify(compact) + "\n\nRecommend up to three candidates by exact title, explaining each fit. If none fit, say that honestly."
     });
