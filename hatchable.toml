@@ -5,6 +5,18 @@ providers = ["email"]
 [ai]
 required = true
 
+[[config]]
+name = "ai_model"
+type = "select"
+label = "CineAI model provider"
+help = "Choose the model family matching the AI provider key connected in Hatchable Setup."
+options = [
+  { value = "gpt", label = "OpenAI" },
+  { value = "gemini", label = "Google Gemini" },
+  { value = "sonnet", label = "Anthropic Claude" }
+]
+default = "gpt"
+
 [[secret]]
 name = "TMDB_API_KEY"
 description = "TMDB API key used server-side to retrieve verified movie data."
