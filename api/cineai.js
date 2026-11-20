@@ -93,6 +93,9 @@ export default async function (req, res) {
 
     res.json({ reply, movies: recommendations });
   } catch (e) {
-    res.status(503).json({ error: e.message || "CineAI is unavailable right now. Please try again." });
+    console.error("CineAI request failed:", e?.message || e);
+    res.status(503).json({
+      error: "CineAI is temporarily busy because Google's Gemini service is experiencing high demand. Please try again in a minute."
+    });
   }
 }
