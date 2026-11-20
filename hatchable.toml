@@ -32,3 +32,7 @@ write = "own"
 [db.tables.reviews]
 read = "public"
 write = "own"
+
+[db.tables.review_likes]
+read = "public"
+write = "own"
