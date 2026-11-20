@@ -13,6 +13,47 @@
 .movie-file-content{padding:0 30px 30px}.movie-section{padding:24px 0;border-bottom:1px solid var(--line)}.movie-section-heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:15px}.movie-section-heading span{font-size:8px;letter-spacing:1.5px;color:#9d91c6}.movie-section-heading h3{font:600 21px var(--display);margin:6px 0 0}.movie-section-heading h3 small{font:400 9px var(--sans);color:#9293a3;margin-left:8px}
 .cast-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.cast-person{min-width:0;display:grid;gap:5px}.cast-person img,.cast-placeholder{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:7px;background:#201d2d}.cast-placeholder{display:grid;place-items:center;color:var(--gold);font-size:22px}.cast-person b{font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cast-person small{font-size:9px;color:#858697;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .community-reviews{display:grid;gap:10px}.community-review{padding:13px;border:1px solid var(--line);background:#ffffff04;border-radius:8px}.review-score{font-size:10px;color:var(--gold);font-weight:700}.community-review p{font-size:11px;line-height:1.7;color:#d1cfda;margin:7px 0}.community-review small{font-size:8px;color:#858697}.spoiler-label{font-size:8px;letter-spacing:1px;color:#f0a2a9;border:1px solid #f05c6855;padding:3px 5px;border-radius:4px}.spoiler-check{display:flex;align-items:center;gap:8px;color:#aaa;font-size:10px;margin-top:10px}.spoiler-check input{accent-color:var(--purple)}.muted-copy{color:#8e8f9f;font-size:10px;line-height:1.7}.similar-movie-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+/* CineQuiz gameplay and history */
+.quiz-mode-picker{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0 20px}
+.quiz-mode{border:1px solid rgba(194,169,255,.28);background:rgba(18,18,42,.55);color:#e9e1ff;border-radius:999px;padding:10px 15px;cursor:pointer;transition:.2s}
+.quiz-mode:hover,.quiz-mode.active{border-color:#b69aff;background:linear-gradient(110deg,rgba(127,89,221,.42),rgba(44,155,174,.3));box-shadow:0 0 20px rgba(151,117,255,.18);transform:translateY(-2px)}
+.quiz-question.quiz-live,.quiz-question.quiz-results{max-width:850px;margin:28px auto;padding:clamp(22px,4vw,38px);border:1px solid rgba(191,164,255,.28);border-radius:26px;background:linear-gradient(140deg,rgba(35,28,75,.88),rgba(19,47,72,.85),rgba(61,29,69,.82));box-shadow:0 24px 70px rgba(0,0,0,.25)}
+.quiz-progress-row{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.quiz-timer{font-size:19px;font-weight:800;color:#a6f1ff;font-variant-numeric:tabular-nums;padding:8px 13px;border-radius:12px;background:rgba(48,139,164,.18)}
+.quiz-timer.urgent{color:#ff9cae;background:rgba(220,75,103,.2);animation:quizPulse .65s infinite alternate}
+@keyframes quizPulse{to{transform:scale(1.08);box-shadow:0 0 18px rgba(255,85,125,.35)}}
+.quiz-progress{height:7px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden;margin:16px 0 25px}
+.quiz-progress span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#9d79ff,#6ee4ec,#ff9ac9);transition:width .35s}
+.quiz-poster-clue{display:block;width:min(230px,70%);max-height:310px;object-fit:cover;border-radius:17px;margin:18px auto 24px;box-shadow:0 16px 38px rgba(0,0,0,.42)}
+.quiz-plot-clue{padding:18px 20px;border-radius:16px;background:rgba(255,255,255,.07);border-left:3px solid #c39aff;color:#e5def5;line-height:1.7}
+.quiz-options-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:22px}
+.quiz-option{min-height:54px;padding:14px 16px;border-radius:14px;border:1px solid rgba(188,166,255,.27);background:rgba(12,16,39,.48);color:#f4efff;text-align:left;cursor:pointer;transition:transform .18s,border-color .18s,background .18s}
+.quiz-option:not(:disabled):hover{transform:translateY(-2px);border-color:#8ce7f5;background:rgba(62,113,148,.24)}
+.quiz-option:disabled{cursor:default;opacity:.88}
+.quiz-option.correct{border-color:#65e7b0;background:rgba(32,164,113,.23);color:#b9ffdf}
+.quiz-option.wrong{border-color:#ff829d;background:rgba(194,55,91,.24);color:#ffc0cf}
+.quiz-feedback{min-height:24px;margin:18px 0 0;color:#cfc5e9;font-weight:600}
+.quiz-result-orb{font-size:40px;color:#ffd78b;text-shadow:0 0 25px rgba(255,190,104,.6)}
+.quiz-results{text-align:center}
+.quiz-results h2{font-size:clamp(54px,9vw,82px);margin:8px 0;color:#fff}
+.quiz-results h2 span{font-size:.48em;color:#bcb0d8}
+.quiz-result-message{color:#ded5f3}
+.quiz-result-stats{display:flex;justify-content:center;gap:clamp(20px,5vw,55px);margin:25px 0}
+.quiz-result-stats div{display:flex;flex-direction:column;gap:5px}
+.quiz-result-stats b{font-size:23px;color:#a9efff}
+.quiz-result-stats small{font-size:10px;letter-spacing:1.5px;color:#bdb1d9}
+.quiz-history-section{margin-top:34px}
+.quiz-history-list{display:grid;gap:10px;margin-top:16px}
+.quiz-history-card{display:flex;align-items:center;gap:16px;padding:15px 18px;border:1px solid rgba(193,169,255,.2);border-radius:16px;background:linear-gradient(110deg,rgba(60,42,106,.32),rgba(27,64,82,.28))}
+.quiz-history-score{font-size:25px;font-weight:850;color:#b5a0ff;min-width:48px}
+.quiz-history-score small{font-size:13px;color:#bdb3d4}
+.quiz-history-copy{display:flex;flex-direction:column;gap:4px;flex:1;min-width:0}
+.quiz-history-copy b{font-size:12px;letter-spacing:1px;color:#f2eaff}
+.quiz-history-copy small{font-size:11px;color:#bdb4cf}
+.quiz-history-percent{font-size:17px;font-weight:800;color:#8ce9d2}
+.quiz-history-section .movie-section-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}
+@media(max-width:600px){.quiz-options-grid{grid-template-columns:1fr}.quiz-history-card{gap:10px;padding:13px}.quiz-history-percent{font-size:14px}.quiz-mode-picker{gap:7px}.quiz-mode{padding:9px 11px;font-size:12px}.quiz-result-stats{gap:18px}}
+
 @media(max-width:700px){.movie-file-hero{grid-template-columns:105px minmax(0,1fr);gap:15px;padding:22px 16px;min-height:0}.movie-file-poster img{max-height:175px}.movie-file-copy h2{font-size:23px}.movie-facts{gap:8px}.movie-overview{font-size:10px}.movie-file-content{padding:0 16px 20px}.cast-strip{grid-template-columns:repeat(3,minmax(0,1fr))}.similar-movie-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.movie-section-heading h3{font-size:18px}}
 /* Reviews & Ratings */
 .own-review{margin:0 0 12px;padding:17px}.own-review-top,.community-review-foot{display:flex;align-items:center;justify-content:space-between;gap:12px}.own-review-top span{color:var(--gold);font-size:11px}.own-review p{color:#c7c3d1;font-size:11px;line-height:1.7}.own-review small{color:#858697;font-size:9px}.review-actions{display:flex;gap:8px;margin-top:12px}.review-actions button,.helpful-button{border:1px solid #ffffff20;background:#ffffff08;color:#c9c2da;border-radius:6px;padding:7px 10px;font-size:9px;cursor:pointer}.review-actions .danger-action{color:#f08b94;border-color:#f05c6844}.helpful-button.liked{color:#f4b1c0;border-color:#f05c6877;background:#f05c6818}.review-like-count{font-size:9px;color:#aaa}.community-review-foot{margin-top:8px}.review-actions button:hover,.helpful-button:hover{border-color:var(--gold)}
