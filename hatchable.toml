@@ -44,3 +44,7 @@ write = "own"
 [db.tables.collection_movies]
 read = "own"
 write = "own"
+
+[db.tables.community_profiles]
+read = "public"
+write = "own"
