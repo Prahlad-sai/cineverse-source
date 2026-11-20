@@ -40,18 +40,18 @@ export default async function (req, res) {
       return res.json({ reply: "I couldn't find suitable verified titles in the catalogue just now. Try another genre or mood.", movies: [] });
     }
 
-    const compact = candidates.map(m => ({
+    const compact = candidates.slice(0, 18).map(m => ({
       id: m.id,
       title: m.title,
       year: (m.release_date || "").slice(0, 4),
-      overview: m.overview.slice(0, 500),
+      overview: m.overview.slice(0, 260),
       rating: m.vote_average
     }));
 
     const result = await ai.generateText({
       model: "gemini",
       purpose: "cineai-recommendations",
-      maxTokens: 1200,
+      maxTokens: 2200,
       system: "You are CineAI, a careful film curator. You must select recommendations ONLY by numeric id from the supplied TMDB candidate list. Never invent or recommend a title absent from that list. Use only the supplied title, year, overview and rating. If no candidate genuinely fits, return an empty recommendations array. Return ONLY valid JSON, no markdown fences, with this exact shape: {\"message\":\"one short helpful intro or honest no-match message\",\"recommendations\":[{\"id\":123,\"reason\":\"one sentence grounded only in the supplied overview\"}]}. Return at most three recommendations. Never claim a runtime unless it is supplied.",
       prompt: "Viewer request: " + message + "\n\nVerified TMDB candidates (the only films you may select):\n" + JSON.stringify(compact)
     });
