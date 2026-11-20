@@ -7,13 +7,14 @@ export default async function (req, res) {
     const movieId = Number(req.query?.movie_id);
     if (!Number.isSafeInteger(movieId) || movieId <= 0) return res.status(400).json({ error: "A valid movie_id is required." });
     const user = await auth.getUser(req);
+    const orderBy = req.query?.sort === "helpful" ? "likes DESC, r.created_at DESC" : "r.created_at DESC";
     const { rows } = await db.query(
       `SELECT r.id,r.user_id,r.movie_id,r.movie_title,r.rating,r.content,r.spoiler,r.created_at,
         COALESCE(l.like_count,0)::int AS likes,
         CASE WHEN $2::text IS NULL THEN FALSE ELSE EXISTS(SELECT 1 FROM review_likes mine WHERE mine.review_id=r.id AND mine.user_id=$2) END AS liked_by_me
        FROM reviews r
        LEFT JOIN (SELECT review_id,COUNT(*) AS like_count FROM review_likes GROUP BY review_id) l ON l.review_id=r.id
-       WHERE r.movie_id=$1 ORDER BY r.created_at DESC LIMIT 50`,
+       WHERE r.movie_id=$1 ORDER BY ${orderBy} LIMIT 50`,
       [movieId, user?.id ? String(user.id) : null]
     );
     const count = rows.length;
