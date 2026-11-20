@@ -36,3 +36,11 @@ write = "own"
 [db.tables.review_likes]
 read = "public"
 write = "own"
+
+[db.tables.user_collections]
+read = "own"
+write = "own"
+
+[db.tables.collection_movies]
+read = "own"
+write = "own"
